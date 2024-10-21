@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Form</title>
+</head>
+<body>
+    <form method="post" th:action= "@{/form/submit}" th:object="${form}">
+        <label>Name:</label>
+        <input type="text" id="name" th:field="*{name}">
+        <label>Edad:</label>
+        <input type="number" id="age" min="1" max="150" th:field="*{age}">
+        <input type="submit" value="Send"/>
+    </form>
+</body>
+</html>

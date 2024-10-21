@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite movie</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            /* Une los bordes */
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Choose your favourite movie</h1>
+    <form method="post" th:object="${movieForm}" th:action="@{/submit}">
+        <table>
+            <tr>
+                <td th:each="movie:${movies}">
+                    <img th:src="@{img/{nombre}(nombre=${movie.name} + '.jpg')}" width="90px" height="160px" />
+                </td>
+            </tr>
+            <tr>
+                <td th:each="movie:${movies}">
+                    <img th:src="@{img/icon.png}" width="25px">
+                    <span th:text="${movie.votes}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td th:each="movie:${movies}">
+                    <label>Vote:</label>
+                    <input type="radio" th:field="*{vote}" th:value="${movie.name}">
+                </td>
+            </tr>
+            <tr  th:if="${#fields.hasErrors('vote')}">
+                <td colspan="3">
+                    <p th:errors="*{vote}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="mail">Email:</label>
+                </td>
+                <td colspan="2">
+                    
+                    <input type="email" id="mail" th:field="*{email}">
+                </td>
+            </tr>
+            <tr  th:if="${#fields.hasErrors('email')}">
+                <td colspan="3">
+                    <p th:errors="*{email}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="Vote" style="width: 100%;" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

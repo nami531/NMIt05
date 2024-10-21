@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dates</title>
+</head>
+<body>
+    <form method="post"  th:object="${form}" th:action="@{/form/submit}">
+        <label>Date 1: </label>
+        <input type="text" id="date1" th:field="*{dateOne}" placeholder="yyyy-mm-dd"/>
+        <label>Date 2: </label>
+        <input type="text" id="date2" th:field="*{dateTwo}" placeholder="yyyy-mm-dd"/>
+        <hr>
+        <select size="1" th:field="*{action}" >
+            <option value="1">Difference between dates</option>
+            <option value="2">Leap years between dates</option>
+            <option value="3">January first was sunday</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <div th:if= "${error!=null}">
+        <p>Error: <span th:text="${error}"></span></p>
+    </div>
+    <div th:if= "${errors!=null}">
+        <div th:each= "err:${errors}">
+            <p th:text="${err}"></p>
+        </div>
+    </div>
+
+    <div th:if= "${resultD!=null}">
+        <p>The difference is <span th:text="${resultD}">days</span></p>
+    </div>
+
+    <div th:if= "${resultL!=null}">
+        The leap years are: 
+        <ul>
+            <li th:each= "year:${resultL}" >
+                <p th:text="${year}"></p>
+            </li>
+        </ul>
+    </div>
+    
+    <div th:if= "${resultS!=null}">
+        <span th:text="${resultS}"></span>
+    </div>
+   
+    
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+</head>
+<body>
+    <h3>Countries Info</h3>
+    <form method="post"  th:action="@{/submit}" th:object="${country}">
+        <select onchange="this.form.submit()" th:field="*{name}" size="1">
+            <option th:each="cObject : ${countries}" th:value="${cObject.name}" th:text="${cObject.name}"></option>
+        </select>
+    </form>
+    <div th:if="${selectedCountry!=null}">
+        <p th:text="'Capital: ' + ${selectedCountry.capital}"></p>
+        <p th:text="'Poblation: ' + ${selectedCountry.poblation}"></p>
+    </div>
+</body>
+</html>

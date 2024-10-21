@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace= "~{/fragments/head.html :: head }"></head>
+<body>
+    <div th:replace= "~{/fragments/nav.html :: nav}"></div>
+
+    <h1>Welcome to our web page!</h1>
+    <img src="/img/1.jpg" width="100px" height="100px">
+    <p>&copy;<span th:text="${year}"></span></p>
+</body>
+</html>

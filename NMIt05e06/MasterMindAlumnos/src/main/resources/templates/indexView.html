@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MasterMind</title>
+  </head>
+  <body>
+    <h1>Juego del MasterMind</h1>
+    <p>Debe adivinar un número de 4 cifras distintas. 
+      En cada intento, le informamos de cuantas cifras ha acertado y si esas cifras están en la posición correcta.</p>
+      <p>Ejemplo: Si el número secreto es 1234 y su intento es 1240 indicaremos: 2 bien colocados, 1 mal colocado.
+      Tiene un número de aciertos limitado </p>
+      <br/>
+    <form method="post" th:action= "@{/nuevoJuego}" th:object="${formIndex}">
+      <label>Num tries: </label>
+      <input type="text" th:field="*{maxTries}">
+      <label>Number length:  </label>
+      <input type="text" th:field="*{lengthNum}">
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

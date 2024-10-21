@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace= "~{/fragments/head.html :: head }"></head>
+<body>
+    <div th:replace="~{/fragments/nav.html :: nav}"></div>
+    <h1>Contact</h1>
+    <form method="post" th:action="@{/form/submit}" th:object="${form}"> 
+        <label>
+            Name: <input type="text" th:field="*{name}">
+        </label><br/>
+        <label>
+            Email: <input type="text" th:field="*{email}"> 
+        </label><br/>
+        <label>
+            Contact type:
+            <select id="contactType" th:field="*{contactType}">
+                <option th:each="type : ${T(nmit03.nmit03bookadvisor.domain.Contact).values()}" th:text="${type}" th:value="${type}"></option>
+            </select> 
+        </label><br/>
+        <label>
+            <input type="text" th:field="*{comments}">
+        </label><br/>
+        <label>
+            Do you accept the terms? <input type="checkbox" th:field="*{conditionsAccepted}">
+        </label><br/>
+        <input type="submit" value="Submit">
+    </form> 
+</body>
+</html>

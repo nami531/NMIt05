@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MasterMind</title>
+  </head>
+  <body>
+    <h1>MasterMind</h1>
+    Estado de juego:
+    <span th:text="${estadoJuego}">estado</span>
+    <br/><br/>
+    Nuevo intento: 
+        <form method="post" action="#" th:action="@{/juego}" th:object="${formInfo}">
+          <input type="text" id="intento" th:field="*{intento}">
+          <input type="submit" value="Enviar"/>
+        </form>
+    Lista de intentos:
+        <table border="1">
+            <th>Intento</th><th>Bien colocados</th><th>Mal colocados</th>
+            <tr th:each="intento:${listaIntentos}">
+            <td th:text="${intento.combinacion}">comb</td>
+            <td th:text="${intento.bienColocados}">bienColocados</td>
+            <td th:text="${intento.malColocados}">malColocados</td>
+          </tr>
+        </table>
+        <div th:if="${err!=null}">
+          <p th:text="${err}"></p>
+        </div>
+        <br/>
+        <a th:href="@{/}">Inicio</a><br/>
+    
+  </body>
+</html>
