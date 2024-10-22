@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+    <div th:replace= "~{/fragments/menu.html :: menu }"></div>
+    <h1>Contact</h1>
+    <form method="post" th:action="@{/submit/form}" th:object="${formInfo}" enctype="multipart/form-data" >
+        <label>Name: </label>
+        <input type="text" id="nameSoc" th:field ="*{name}"><br/>
+        <label>
+            DNI: <input type="text" th:field="*{dni}">
+        </label><br/>
+        <label>
+            Email: <input type="email" th:field="*{email}">
+        </label><br/>
+        <label>
+            Address: <input type="text" th:field="*{address}">
+        </label><br/>
+        <select size="3" th:field="*{productType}">
+            <option th:each="product:${T(nmi.nmit02e03.domain.ProductType).values()}" th:value ="${product}" th:text="${product}"></option>
+        </select><br/>
+        <input type="checkbox" th:field="*{conditionsAccepted}">
+        <label>Attach a file:<input type="file" th:field="file"/></label><br/>
+        <label>I accept the terms and conditions</label><br/>
+        <input type="submit" value="Submit">
+    </form>
+    <div th:if= "${dataProcessed!=null}"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace= "~{/fragments/header.html :: header }"></div>
+<body>
+    <div th:replace= "~{/fragments/menu.html :: menu }"></div>
+    <h1 th:if= "${user}!=null">
+        <span th:text="${user}"></span> welcome  to our web page
+    </h1>
+    <h1 th:if= "${user==null}">
+        Welcome to our web page
+    </h1>
+    <h2>Celta de Vigo</h2>
+    <p>Real Club Celta de Vigo, commonly known as Celta de Vigo, is a Spanish football team founded in 1923 in the city of Vigo, Galicia. It was born from the merger of two local clubs, Real Vigo Sporting and Fortuna de Vigo, with the aim of creating a competitive team to represent Galicia in national football.
+
+        Celta has spent much of its history alternating between the First and Second Divisions of Spain. Its golden era came in the 1990s and early 2000s, when the team, nicknamed "EuroCelta," participated in European competitions such as the UEFA Cup and the Champions League. Over the years, it has featured notable players like Iago Aspas, Mostovoi, and Mazinho.
+        
+        The team plays at the Balaídos stadium, and its biggest achievements to date include reaching the Copa del Rey final in 1948 and 2001, although they did not win the title.</p>
+    <footer>
+        <p>&copy;<span th:text="${year}"></span></p>        
+    </footer>
+</body>
+</html>

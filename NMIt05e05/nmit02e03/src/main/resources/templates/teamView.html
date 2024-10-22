@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace= "~{/fragments/header.html :: header }"></div>
+<body>
+    <div th:replace= "~{/fragments/menu.html :: menu }"></div>
+    <h1>Important Achievements of Celta de Vigo</h1>
+    <div th:each= "trophie:${achievements}">
+        <h2 th:text="${trophie.key}"></h2>
+        <ul th:each= "year:${trophie.value}">
+            <li th:text="${year}"></li>
+        </ul>
+    </div>
+</body>
+</html>
